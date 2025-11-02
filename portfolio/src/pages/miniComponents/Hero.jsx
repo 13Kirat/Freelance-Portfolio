@@ -18,7 +18,7 @@ const Hero = () => {
   useEffect(() => {
     const getMyProfile = async () => {
       const { data } = await axios.get(
-        "https://mern-stack-portfolio-backend-code.onrender.com/api/v1/user/portfolio/me",
+        "https://freelance-portfolio-production-8edc.up.railway.app/api/v1/user/portfolio/me",
         { withCredentials: true }
       );
       setUser(data.user);
@@ -33,7 +33,7 @@ const Hero = () => {
       </div>
       <h1 className="overflow-x-hidden text-[1.3rem] sm:text-[1.75rem] 
       md:text-[2.2rem] lg:text-[2.8rem] tracking-[2px] mb-4">
-        Hey, I'm Zeeshan
+        Hey, I'm Gurkirat Singh
       </h1>
       <h1 className="text-tubeLight-effect overflow-x-hidden text-[1.3rem] 
       sm:text-[1.75rem] md:text-[2.2rem] lg:text-[2.8rem] tracking-[15px]">
@@ -48,8 +48,8 @@ const Hero = () => {
       </h1>
       <div className="w-fit px-5 py-2 bg-slate-50 rounded-[20px] flex gap-5 
       items-center mt-4 md:mt-8 lg:mt-10">
-        <Link to={"https://www.youtube.com/@CodeWithZeeshu"} target="_blank">
-          <Youtube className="text-red-500 w-7 h-7"/>
+        <Link to={"https://www.youtube.com"} target="_blank">
+          <Youtube className="text-red-500 w-7 h-7" />
         </Link>
         <Link to={user.instagramURL} target="_blank">
           <Instagram className="text-pink-500 w-7 h-7" />

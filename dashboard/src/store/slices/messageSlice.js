@@ -57,7 +57,7 @@ export const getAllMessages = () => async (dispatch) => {
   dispatch(messageSlice.actions.getAllMessagesRequest());
   try {
     const response = await axios.get(
-      "https://mern-stack-portfolio-backend-code.onrender.com/api/v1/message/getall",
+      "https://freelance-portfolio-production-8edc.up.railway.app/api/v1/message/getall",
       { withCredentials: true }
     );
     dispatch(
@@ -75,7 +75,7 @@ export const deleteMessage = (id) => async (dispatch) => {
   dispatch(messageSlice.actions.deleteMessageRequest());
   try {
     const response = await axios.delete(
-      `https://mern-stack-portfolio-backend-code.onrender.com/api/v1/message/delete/${id}`,
+      `https://freelance-portfolio-production-8edc.up.railway.app/api/v1/message/delete/${id}`,
       {
         withCredentials: true,
       }

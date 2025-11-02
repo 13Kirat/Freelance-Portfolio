@@ -10,7 +10,7 @@ const Portfolio = () => {
   useEffect(() => {
     const getMyProjects = async () => {
       const { data } = await axios.get(
-        "https://mern-stack-portfolio-backend-code.onrender.com/api/v1/project/getall",
+        "https://freelance-portfolio-production-8edc.up.railway.app/api/v1/project/getall",
         { withCredentials: true }
       );
       setProjects(data.projects);
@@ -48,27 +48,27 @@ const Portfolio = () => {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {viewAll
           ? projects &&
-            projects.map((element) => {
-              return (
-                <Link to={`/project/${element._id}`} key={element._id}>
-                  <img
-                    src={element.projectBanner && element.projectBanner.url}
-                    alt={element.title}
-                  />
-                </Link>
-              );
-            })
+          projects.map((element) => {
+            return (
+              <Link to={`/project/${element._id}`} key={element._id}>
+                <img
+                  src={element.projectBanner && element.projectBanner.url}
+                  alt={element.title}
+                />
+              </Link>
+            );
+          })
           : projects &&
-            projects.slice(0, 9).map((element) => {
-              return (
-                <Link to={`/project/${element._id}`} key={element._id}>
-                  <img
-                    src={element.projectBanner && element.projectBanner.url}
-                    alt={element.title}
-                  />
-                </Link>
-              );
-            })}
+          projects.slice(0, 9).map((element) => {
+            return (
+              <Link to={`/project/${element._id}`} key={element._id}>
+                <img
+                  src={element.projectBanner && element.projectBanner.url}
+                  alt={element.title}
+                />
+              </Link>
+            );
+          })}
       </div>
       {projects && projects.length > 9 && (
         <div className="w-full text-center my-9">
