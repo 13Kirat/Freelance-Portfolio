@@ -25,22 +25,17 @@ const About = () => {
         <div className="grid md:grid-cols-2 my-8 sm:my-20 gap-14">
           <div className="flex justify-center items-center">
             <img
-              src="/me.jpg"
+              src="../../../public/studio.png"
               alt="avatar"
               className="bg-white p-2 sm:p-4 rotate-[25deg] h-[240px] sm:h-[340px] md:h-[350px] lg:h-[450px]"
             />
           </div>
           <div className="flex justify-center flex-col tracking-[1px] text-xl gap-5">
             <p>
-              My name is Zeeshan, but my followers call me Zeeshu. I will
-              graduate in Software Engineering from SMIU around 2024. I work as
-              a web developer and freelancer. My hobbies include watching
-              movies, series, playing video games, and occasionally cooking.
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ducimus fuga ex nobis possimus in saepe, natus ipsam non maiores, atque nemo asperiores quas cum doloribus officia ipsum! Consectetur, vero tempora.
             </p>
             <p>
-              I have interests not only in technology but also in movies,
-              series, video games, and cooking. I excel in meeting deadlines for
-              my work.
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laudantium, atque adipisci similique excepturi nobis maxime accusantium ullam. Laudantium sit praesentium saepe corrupti voluptate. Omnis reprehenderit fugiat praesentium blanditiis. Ex, fugit.
             </p>
           </div>
         </div>
