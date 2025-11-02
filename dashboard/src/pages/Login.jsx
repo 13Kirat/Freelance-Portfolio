@@ -11,14 +11,22 @@ import SpecialLoadingButton from "./sub-components/SpecialLoadingButton";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { loading, isAuthenticated, error } = useSelector(
+  const [loading, setLoading] = useState(false);
+  const { isAuthenticated, error } = useSelector(
     (state) => state.user
   );
   const dispatch = useDispatch();
   const navigateTo = useNavigate();
 
   const handleLogin = () => {
-    dispatch(login(email, password));
+    try {
+      setLoading(true);
+      dispatch(login(email, password));
+    } catch (error) {
+      setLoading(false);
+    } finally {
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
@@ -69,7 +77,7 @@ const Login = () => {
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>
-            {loading ? (
+            {!!loading ? (
               <SpecialLoadingButton content={"Loggin In"} />
             ) : (
               <Button

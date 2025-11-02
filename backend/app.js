@@ -13,11 +13,11 @@ import softwareApplicationRouter from "./routes/softwareApplicationRouter.js";
 import projectRouter from "./routes/projectRouter.js";
 
 const app = express();
-dotenv.config({ path: "./config/config.env" });
+dotenv.config();
 
 app.use(
   cors({
-    origin: [process.env.PORTFOLIO_URL, process.env.DASHBOARD_URL, "http://localhost:5173/", "http://localhost:5174/"],
+    origin: [process.env.PORTFOLIO_URL, process.env.DASHBOARD_URL, "http://localhost:5173", "http://localhost:5174"],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })
