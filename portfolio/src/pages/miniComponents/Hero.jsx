@@ -15,16 +15,23 @@ import axios from "axios";
 
 const Hero = () => {
   const [user, setUser] = useState({});
-  useEffect(() => {
-    const getMyProfile = async () => {
+
+  const getMyProfile = async () => {
+    try {
       const { data } = await axios.get(
         "https://freelance-portfolio-production-8edc.up.railway.app/api/v1/user/portfolio/me",
         { withCredentials: true }
       );
       setUser(data.user);
-    };
+    } catch (error) {
+      console.log(error)
+    }
+  };
+
+  useEffect(() => {
     getMyProfile();
   }, []);
+
   return (
     <div className="w-full">
       <div className="flex items-center gap-2 mb-2">
@@ -38,7 +45,7 @@ const Hero = () => {
       <h1 className="text-tubeLight-effect overflow-x-hidden text-[1.3rem] 
       sm:text-[1.75rem] md:text-[2.2rem] lg:text-[2.8rem] tracking-[15px]">
         <Typewriter
-          words={["FULLSTACK DEVELOPER", "YOUTUBER", "FREELANCER"]}
+          words={["FULLSTACK DEVELOPER", "RESEARCHER", "FREELANCER"]}
           loop={50}
           cursor
           typeSpeed={70}
@@ -51,21 +58,21 @@ const Hero = () => {
         <Link to={"https://www.youtube.com"} target="_blank">
           <Youtube className="text-red-500 w-7 h-7" />
         </Link>
-        <Link to={user.instagramURL} target="_blank">
+        <Link to={user?.instagramURL} target="_blank">
           <Instagram className="text-pink-500 w-7 h-7" />
         </Link>
-        <Link to={user.facebookURL} target="_blank">
+        <Link to={user?.facebookURL} target="_blank">
           <Facebook className="text-blue-800 w-7 h-7" />
         </Link>
-        <Link to={user.linkedInURL} target="_blank">
+        <Link to={user?.linkedInURL} target="_blank">
           <Linkedin className="text-sky-500 w-7 h-7" />
         </Link>
-        <Link to={user.twitterURL} target="_blank">
+        <Link to={user?.twitterURL} target="_blank">
           <Twitter className="text-blue-800 w-7 h-7" />
         </Link>
       </div>
       <div className="mt-4 md:mt-8 lg:mt-10  flex gap-3">
-        <Link to={user.githubURL} target="_blank">
+        <Link to={user?.githubURL} target="_blank">
           <Button className="rounded-[30px] flex items-center gap-2 flex-row">
             <span>
               <Github />
@@ -73,7 +80,7 @@ const Hero = () => {
             <span>Github</span>
           </Button>
         </Link>
-        <Link to={user.resume && user.resume.url} target="_blank">
+        <Link to={user?.resume && user?.resume.url} target="_blank">
           <Button className="rounded-[30px] flex items-center gap-2 flex-row">
             <span>
               <ExternalLink />
@@ -82,7 +89,7 @@ const Hero = () => {
           </Button>
         </Link>
       </div>
-      <p className="mt-8 text-xl tracking-[2px]">{user.aboutMe}</p>
+      <p className="mt-8 text-xl tracking-[2px]">{user?.aboutMe}</p>
       <hr className="my-8 md::my-10 " />
     </div>
   );

@@ -18,7 +18,11 @@ import { getAllTimeline } from "./store/slices/timelineSlice";
 import { getAllMessages } from "./store/slices/messageSlice";
 import ManageTimeline from "./pages/ManageTimeline";
 import { getAllProjects } from "./store/slices/projectSlice";
+import { getAllTips } from "./store/slices/tipSlice";
 import ViewProject from "./pages/ViewProject";
+import ManageTips from "./pages/ManageTips";
+import UpdateTip from "./pages/UpdateTip";
+import ViewTip from "./pages/ViewTip";
 
 function App() {
   const dispatch = useDispatch();
@@ -30,6 +34,7 @@ function App() {
     dispatch(getAllTimeline());
     dispatch(getAllMessages());
     dispatch(getAllProjects());
+    dispatch(getAllTips());
   }, []);
   return (
     <Router>
@@ -43,6 +48,9 @@ function App() {
         <Route path="/manage/projects" element={<ManageProjects />} />
         <Route path="/view/project/:id" element={<ViewProject />} />
         <Route path="/update/project/:id" element={<UpdateProject />} />
+<Route path="/manage/tips" element={<ManageTips />} />
+        <Route path="/update/tip/:id" element={<UpdateTip />} />
+        <Route path="/view/tip/:id" element={<ViewTip />} />
       </Routes>
       <ToastContainer position="bottom-right" theme="dark" />
     </Router>

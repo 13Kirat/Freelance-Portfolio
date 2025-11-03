@@ -6,6 +6,7 @@ import projectReducer from "./slices/projectSlice";
 import timelineReducer from "./slices/timelineSlice";
 import softwareApplicationReducer from "./slices/softwareApplicationSlice";
 import messageReducer from "./slices/messageSlice";
+import tipReducer from "./slices/tipSlice.js";
 
 export const store = configureStore({
   reducer: {
@@ -16,5 +17,6 @@ export const store = configureStore({
     timeline: timelineReducer,
     softwareApplications: softwareApplicationReducer,
     messages: messageReducer,
+    tip: tipReducer,
   },
 });

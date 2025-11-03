@@ -10,6 +10,9 @@ import {
   PanelLeft,
   PencilRuler,
   User,
+  Lightbulb,
+  LightbulbOff,
+  LightbulbIcon,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
@@ -30,6 +33,8 @@ import { logout } from "@/store/slices/userSlice";
 import { toast } from "react-toastify";
 import Messages from "./sub-components/Messages";
 import AddTimeline from "./sub-components/AddTimeline";
+import AddTip from "./sub-components/AddTip";
+import ManageTips from "./ManageTips";
 
 const HomePage = () => {
   const [active, setActive] = useState("");
@@ -119,6 +124,25 @@ const HomePage = () => {
               <TooltipTrigger asChild>
                 <Link
                   className={`flex h-9 w-9 items-center justify-center rounded-lg ${
+                    active === "Add Tip"
+                      ? "text-accent-foreground bg-accent"
+                      : "text-muted-foreground"
+                  }  transition-colors hover:text-foreground md:h-8 md:w-8`}
+                  onClick={() => setActive("Add Tip")}
+                >
+                  <Lightbulb className="h-5 w-5" />
+                  <span className="sr-only">Add Tip</span>
+                </Link>
+              </TooltipTrigger>
+              <TooltipContent side="right">Add Tip</TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
+
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Link
+                  className={`flex h-9 w-9 items-center justify-center rounded-lg ${
                     active === "Add Uses"
                       ? "text-accent-foreground bg-accent"
                       : "text-muted-foreground"
@@ -166,6 +190,24 @@ const HomePage = () => {
                 </Link>
               </TooltipTrigger>
               <TooltipContent side="right">Messages</TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Link
+                  className={`flex h-9 w-9 items-center justify-center rounded-lg ${
+                    active === "Manage Tip"
+                      ? "text-accent-foreground bg-accent"
+                      : "text-muted-foreground"
+                  }  transition-colors hover:text-foreground md:h-8 md:w-8`}
+                  onClick={() => setActive("Manage Tip")}
+                >
+                  <Lightbulb className="h-5 w-5" />
+                  <span className="sr-only">Manage Tips</span>
+                </Link>
+              </TooltipTrigger>
+              <TooltipContent side="right">Manage Tips</TooltipContent>
             </Tooltip>
           </TooltipProvider>
           <TooltipProvider>
@@ -256,6 +298,17 @@ const HomePage = () => {
               </Link>
               <Link
                 className={`flex items-center gap-4 px-2.5 ${
+                  active === "Add Tip"
+                    ? "text-foreground"
+                    : "text-muted-foreground hover:text-foreground "
+                }`}
+                onClick={() => setActive("Add Tip")}
+              >
+                <Lightbulb className="h-5 w-5" />
+                Add Tip
+              </Link>
+              <Link
+                className={`flex items-center gap-4 px-2.5 ${
                   active === "Add Uses"
                     ? "text-foreground"
                     : "text-muted-foreground hover:text-foreground "
@@ -297,6 +350,17 @@ const HomePage = () => {
               >
                 <MessageSquareMore className="h-5 w-5" />
                 Messages
+              </Link>
+              <Link
+                className={`flex items-center gap-4 px-2.5 ${
+                  active === "Manage Tip"
+                    ? "text-foreground"
+                    : "text-muted-foreground hover:text-foreground "
+                }`}
+                onClick={() => setActive("Manage Tip")}
+              >
+                <LightbulbIcon className="h-5 w-5" />
+                Manage Tips
               </Link>
               <Link
                 className={
@@ -344,6 +408,12 @@ const HomePage = () => {
             break;
           case "Account":
             return <Account />;
+            break;
+          case "Add Tip":
+            return <AddTip />;
+            break;
+          case "Manage Tip":
+            return <ManageTips />;
             break;
           default:
             return <Dashboard />;

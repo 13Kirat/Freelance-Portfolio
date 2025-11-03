@@ -11,6 +11,7 @@ import messageRouter from "./routes/messageRouter.js";
 import skillRouter from "./routes/skillRouter.js";
 import softwareApplicationRouter from "./routes/softwareApplicationRouter.js";
 import projectRouter from "./routes/projectRouter.js";
+import tipRouter from "./routes/tipRouter.js";
 
 const app = express();
 dotenv.config();
@@ -40,6 +41,7 @@ app.use("/api/v1/message", messageRouter);
 app.use("/api/v1/skill", skillRouter);
 app.use("/api/v1/softwareapplication", softwareApplicationRouter);
 app.use("/api/v1/project", projectRouter);
+app.use("/api/v1/tip", tipRouter);
 
 dbConnection();
 app.use(errorMiddleware);
