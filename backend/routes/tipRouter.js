@@ -10,9 +10,9 @@ import { isAuthenticated } from "../middlewares/auth.js";
 
 const router = express.Router();
 
-router.post("/add", isAuthenticated, addNewTip);
-router.delete("/delete/:id", isAuthenticated, deleteTip);
-router.put("/update/:id", isAuthenticated, updateTip);
+router.post("/add",  addNewTip);
+router.delete("/delete/:id",  deleteTip);
+router.put("/update/:id",  updateTip);
 router.get("/getall", getAllTips);
 router.get("/get/:id", getSingleTip);
 
