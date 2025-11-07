@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import { Textarea } from "@/components/ui/textarea";
 import { useDispatch, useSelector } from "react-redux";
@@ -14,17 +15,24 @@ const AddTip = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
-  const [tipImage, setTipImage] = useState("");
-  const [tipImagePreview, setTipImagePreview] = useState("");
+  const [images, setImages] = useState([]);
+  const [imagesPreview, setImagesPreview] = useState([]);
 
   const handleImage = (e) => {
-    const file = e.target.files[0];
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = () => {
-      setTipImagePreview(reader.result);
-      setTipImage(file);
-    };
+    const files = Array.from(e.target.files);
+    setImages((prevImages) => [...prevImages, ...files]);
+    const previews = files.map((file) => {
+      const reader = new FileReader();
+      return new Promise((resolve) => {
+        reader.onload = () => {
+          resolve(reader.result);
+        };
+        reader.readAsDataURL(file);
+      });
+    });
+    Promise.all(previews).then((results) => {
+      setImagesPreview((prevPreviews) => [...prevPreviews, ...results]);
+    });
   };
 
   const { loading, error, message } = useSelector((state) => state.tip);
@@ -35,9 +43,9 @@ const AddTip = () => {
     formData.append("title", title);
     formData.append("description", description);
     formData.append("category", category);
-    if (tipImage) {
-      formData.append("tipImage", tipImage);
-    }
+    images.forEach((image) => {
+      formData.append("images", image);
+    });
     dispatch(addNewTip(formData));
   };
 
@@ -118,16 +126,21 @@ const AddTip = () => {
                     htmlFor="cover-photo"
                     className="block text-sm font-medium leading-6 text-gray-900"
                   >
-                    Tip Image (Optional)
+                    Tip Images
                   </label>
                   <div className="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
                     <div className="text-center">
-                      {tipImagePreview ? (
-                        <img
-                          className="mx-auto h-[250px] w-full text-gray-300"
-                          viewBox="0 0 24 24"
-                          src={tipImagePreview && `${tipImagePreview}`}
-                        />
+                      {imagesPreview.length > 0 ? (
+                        <div className="flex flex-wrap gap-4">
+                          {imagesPreview.map((preview, index) => (
+                            <img
+                              key={index}
+                              className="h-[100px] w-auto text-gray-300"
+                              src={preview}
+                              alt={`preview ${index}`}
+                            />
+                          ))}
+                        </div>
                       ) : (
                         <svg
                           className="mx-auto h-12 w-12 text-gray-300"
@@ -148,13 +161,14 @@ const AddTip = () => {
                           htmlFor="file-upload"
                           className="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
                         >
-                          <span>Upload a file</span>
+                          <span>Upload files</span>
                           <input
                             id="file-upload"
                             name="file-upload"
                             type="file"
                             className="sr-only"
                             onChange={handleImage}
+                            multiple
                           />
                         </label>
                         <p className="pl-1">or drag and drop</p>
@@ -191,3 +205,4 @@ const AddTip = () => {
 };
 
 export default AddTip;
+

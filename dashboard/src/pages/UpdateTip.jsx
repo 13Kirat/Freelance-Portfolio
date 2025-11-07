@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import { Textarea } from "@/components/ui/textarea";
 import { useNavigate, useParams } from "react-router-dom";
@@ -17,46 +18,63 @@ const UpdateTip = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
-  const [tipImage, setTipImage] = useState("");
-  const [tipImagePreview, setTipImagePreview] = useState("");
+  const [images, setImages] = useState([]);
+  const [imagesPreview, setImagesPreview] = useState([]);
+  const [existingImages, setExistingImages] = useState([]);
+  const [deletedImages, setDeletedImages] = useState([]);
 
   const { error, message, loading } = useSelector((state) => state.tip);
   const dispatch = useDispatch();
   const { id } = useParams();
 
-  const handleTipImage = (e) => {
-    const file = e.target.files[0];
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = () => {
-      setTipImagePreview(reader.result);
-      setTipImage(file);
-    };
+  const handleImage = (e) => {
+    const files = Array.from(e.target.files);
+    setImages((prevImages) => [...prevImages, ...files]);
+    const previews = files.map((file) => {
+      const reader = new FileReader();
+      return new Promise((resolve) => {
+        reader.onload = () => {
+          resolve(reader.result);
+        };
+        reader.readAsDataURL(file);
+      });
+    });
+    Promise.all(previews).then((results) => {
+      setImagesPreview((prevPreviews) => [...prevPreviews, ...results]);
+    });
+  };
+
+  const removeImage = (index, isExisting) => {
+    if (isExisting) {
+      const deletedImage = existingImages[index];
+      setDeletedImages((prevDeleted) => [...prevDeleted, deletedImage.public_id]);
+      setExistingImages((prevExisting) => prevExisting.filter((_, i) => i !== index));
+    } else {
+      setImages((prevImages) => prevImages.filter((_, i) => i !== index));
+      setImagesPreview((prevPreviews) => prevPreviews.filter((_, i) => i !== index));
+    }
   };
 
   useEffect(() => {
     const getTip = async () => {
       await axios
-        .get(`https://freelance-portfolio-production-8f14.up.railway.app/api/v1/tip/get/${id}`, {
+        .get(`${import.meta.env.VITE_API_BASE_URL}/api/v1/tip/get/${id}`, {
           withCredentials: true,
         })
         .then((res) => {
           setTitle(res.data.tip.title);
           setDescription(res.data.tip.description);
           setCategory(res.data.tip.category);
-          setTipImage(
-            res.data.tip.tipImage && res.data.tip.tipImage.url
-          );
-          setTipImagePreview(
-            res.data.tip.tipImage && res.data.tip.tipImage.url
-          );
+          setExistingImages(res.data.tip.images || []);
         })
         .catch((error) => {
           toast.error(error.response.data.message);
         });
     };
     getTip();
+  }, [id]);
 
+  useEffect(() => {
     if (error) {
       toast.error(error);
       dispatch(clearAllTipErrors());
@@ -65,8 +83,9 @@ const UpdateTip = () => {
       toast.success(message);
       dispatch(resetTipSlice());
       dispatch(getAllTips());
+      navigateTo("/");
     }
-  }, [id, message, error]);
+  }, [message, error, dispatch]);
 
   const handleUpdateTip = (e) => {
     e.preventDefault();
@@ -74,9 +93,13 @@ const UpdateTip = () => {
     formData.append("title", title);
     formData.append("description", description);
     formData.append("category", category);
-    if (tipImage) {
-      formData.append("tipImage", tipImage);
-    }
+    deletedImages.forEach((public_id) => {
+      formData.append("deletedImages[]", public_id);
+    });
+    images.forEach((image) => {
+      formData.append("images", image);
+    });
+
     dispatch(updateTip(id, formData));
   };
 
@@ -104,20 +127,49 @@ const UpdateTip = () => {
               </div>
               <div className="mt-10 flex flex-col gap-5">
                 <div className="w-full sm:col-span-4">
-                  <img
-                    src={
-                      tipImagePreview
-                        ? tipImagePreview
-                        : "/avatarHolder.jpg"
-                    }
-                    alt="tipImage"
-                    className="w-full h-auto"
-                  />
-                  <div className="relative">
+                  <label className="block text-sm font-medium leading-6 text-gray-900">
+                    Images
+                  </label>
+                  <div className="mt-2 flex flex-wrap gap-4">
+                    {existingImages.map((image, index) => (
+                      <div key={index} className="relative">
+                        <img
+                          src={image.url}
+                          alt={`existing-tip-${index}`}
+                          className="w-32 h-32 object-cover"
+                        />
+                        <Button
+                          type="button"
+                          className="absolute top-0 right-0 bg-red-500 text-white p-1 rounded-full"
+                          onClick={() => removeImage(index, true)}
+                        >
+                          X
+                        </Button>
+                      </div>
+                    ))}
+                    {imagesPreview.map((preview, index) => (
+                      <div key={index} className="relative">
+                        <img
+                          src={preview}
+                          alt={`new-tip-${index}`}
+                          className="w-32 h-32 object-cover"
+                        />
+                         <Button
+                          type="button"
+                          className="absolute top-0 right-0 bg-red-500 text-white p-1 rounded-full"
+                          onClick={() => removeImage(index, false)}
+                        >
+                          X
+                        </Button>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="relative mt-4">
                     <input
                       type="file"
-                      onChange={handleTipImage}
-                      className="avatar-update-btn mt-4 w-full"
+                      onChange={handleImage}
+                      className="avatar-update-btn w-full"
+                      multiple
                     />
                   </div>
                 </div>
@@ -190,3 +242,4 @@ const UpdateTip = () => {
 };
 
 export default UpdateTip;
+

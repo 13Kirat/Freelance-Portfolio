@@ -8,31 +8,35 @@ export const addNewTip = catchAsyncErrors(async (req, res, next) => {
   if (!title || !description || !category) {
     return next(new ErrorHandler("Please Provide All Details!", 400));
   }
-  let tipImage = {};
-  if (req.files && req.files.tipImage) {
-    const { tipImage: imageFile } = req.files;
-    const cloudinaryResponse = await cloudinary.uploader.upload(
-      imageFile.tempFilePath,
-      { folder: "PORTFOLIO TIP IMAGES" }
-    );
-    if (!cloudinaryResponse || cloudinaryResponse.error) {
-      console.error(
-        "Cloudinary Error:",
-        cloudinaryResponse.error || "Unknown Cloudinary error"
+
+  let images = [];
+  if (req.files && req.files.images) {
+    const imageFiles = Array.isArray(req.files.images) ? req.files.images : [req.files.images];
+
+    for (const imageFile of imageFiles) {
+      const cloudinaryResponse = await cloudinary.uploader.upload(
+        imageFile.tempFilePath,
+        { folder: "PORTFOLIO TIP IMAGES" }
       );
-      return next(new ErrorHandler("Failed to upload image to Cloudinary", 500));
+      if (!cloudinaryResponse || cloudinaryResponse.error) {
+        console.error(
+          "Cloudinary Error:",
+          cloudinaryResponse.error || "Unknown Cloudinary error"
+        );
+        return next(new ErrorHandler("Failed to upload some images to Cloudinary", 500));
+      }
+      images.push({
+        public_id: cloudinaryResponse.public_id,
+        url: cloudinaryResponse.secure_url,
+      });
     }
-    tipImage = {
-      public_id: cloudinaryResponse.public_id,
-      url: cloudinaryResponse.secure_url,
-    };
   }
 
   const tip = await Tip.create({
     title,
     description,
     category,
-    tipImage,
+    images,
   });
   res.status(201).json({
     success: true,
@@ -42,34 +46,52 @@ export const addNewTip = catchAsyncErrors(async (req, res, next) => {
 });
 
 export const updateTip = catchAsyncErrors(async (req, res, next) => {
-  const newTipData = {
-    title: req.body.title,
-    description: req.body.description,
-    category: req.body.category,
-  };
-  if (req.files && req.files.tipImage) {
-    const { tipImage: imageFile } = req.files;
-    const tip = await Tip.findById(req.params.id);
-    if (tip.tipImage && tip.tipImage.public_id) {
-      const tipImageId = tip.tipImage.public_id;
-      await cloudinary.uploader.destroy(tipImageId);
-    }
-    const newTipImage = await cloudinary.uploader.upload(
-      imageFile.tempFilePath,
-      {
-        folder: "PORTFOLIO TIP IMAGES",
-      }
-    );
-    newTipData.tipImage = {
-      public_id: newTipImage.public_id,
-      url: newTipImage.secure_url,
-    };
+  const { id } = req.params;
+  let tip = await Tip.findById(id);
+  if (!tip) {
+    return next(new ErrorHandler("Tip not found!", 404));
   }
-  const tip = await Tip.findByIdAndUpdate(req.params.id, newTipData, {
-    new: true,
-    runValidators: true,
-    useFindAndModify: false,
-  });
+
+  const { title, description, category, deletedImages } = req.body;
+
+  // Delete images from Cloudinary and remove from tip.images array
+  if (deletedImages && deletedImages.length > 0) {
+    for (const public_id of deletedImages) {
+      await cloudinary.uploader.destroy(public_id);
+    }
+    tip.images = tip.images.filter(
+      (image) => !deletedImages.includes(image.public_id)
+    );
+  }
+
+  // Add new images
+  if (req.files && req.files.images) {
+    const imageFiles = Array.isArray(req.files.images) ? req.files.images : [req.files.images];
+    for (const imageFile of imageFiles) {
+      const cloudinaryResponse = await cloudinary.uploader.upload(
+        imageFile.tempFilePath,
+        { folder: "PORTFOLIO TIP IMAGES" }
+      );
+      if (!cloudinaryResponse || cloudinaryResponse.error) {
+        console.error(
+          "Cloudinary Error:",
+          cloudinaryResponse.error || "Unknown Cloudinary error"
+        );
+        return next(new ErrorHandler("Failed to upload some images to Cloudinary", 500));
+      }
+      tip.images.push({
+        public_id: cloudinaryResponse.public_id,
+        url: cloudinaryResponse.secure_url,
+      });
+    }
+  }
+
+  tip.title = title;
+  tip.description = description;
+  tip.category = category;
+
+  await tip.save();
+
   res.status(200).json({
     success: true,
     message: "Tip Updated!",
@@ -83,9 +105,10 @@ export const deleteTip = catchAsyncErrors(async (req, res, next) => {
   if (!tip) {
     return next(new ErrorHandler("Already Deleted!", 404));
   }
-  if (tip.tipImage && tip.tipImage.public_id) {
-    const tipImageId = tip.tipImage.public_id;
-    await cloudinary.uploader.destroy(tipImageId);
+  if (tip.images && tip.images.length > 0) {
+    for (const image of tip.images) {
+      await cloudinary.uploader.destroy(image.public_id);
+    }
   }
   await tip.deleteOne();
   res.status(200).json({

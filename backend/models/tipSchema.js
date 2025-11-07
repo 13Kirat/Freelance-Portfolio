@@ -13,14 +13,16 @@ const tipSchema = new mongoose.Schema({
     type: String,
     required: [true, "Category is required!"],
   },
-  tipImage: {
-    public_id: {
-      type: String,
+  images: [
+    {
+      public_id: {
+        type: String,
+      },
+      url: {
+        type: String,
+      },
     },
-    url: {
-      type: String,
-    },
-  },
+  ],
 });
 
 export const Tip = mongoose.model("Tip", tipSchema);

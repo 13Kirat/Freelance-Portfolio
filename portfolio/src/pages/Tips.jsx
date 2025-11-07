@@ -1,13 +1,16 @@
+
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllTips } from "../store/slices/tipSlice"; // This will fail until the store is set up
+import { getAllTips } from "../store/slices/tipSlice";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import TipModal from "./miniComponents/TipModal";
 
 const Tips = () => {
   const dispatch = useDispatch();
-  const { tips, loading } = useSelector((state) => state.tip); // This will fail until the store is set up
+  const { tips, loading } = useSelector((state) => state.tip);
   const [category, setCategory] = useState("All");
+  const [selectedTip, setSelectedTip] = useState(null);
 
   useEffect(() => {
     dispatch(getAllTips());
@@ -16,6 +19,14 @@ const Tips = () => {
   const categories = ["All", ...new Set(tips.map((tip) => tip.category))];
 
   const filteredTips = category === "All" ? tips : tips.filter((tip) => tip.category === category);
+
+  const openModal = (tip) => {
+    setSelectedTip(tip);
+  };
+
+  const closeModal = () => {
+    setSelectedTip(null);
+  };
 
   return (
     <div className="container mx-auto py-8">
@@ -37,10 +48,10 @@ const Tips = () => {
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredTips.map((tip) => (
-            <Card key={tip._id}>
-              {tip.tipImage && tip.tipImage.url && (
+            <Card key={tip._id} onClick={() => openModal(tip)} className="cursor-pointer">
+              {tip.images && tip.images[0] && (
                 <img
-                  src={tip.tipImage.url}
+                  src={tip.images[0].url}
                   alt={tip.title}
                   className="w-full h-48 object-cover"
                 />
@@ -50,14 +61,16 @@ const Tips = () => {
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-muted-foreground">{tip.category}</p>
-                <p className="mt-4">{tip.description}</p>
+                <p className="mt-4 truncate">{tip.description}</p>
               </CardContent>
             </Card>
           ))}
         </div>
       )}
+      {selectedTip && <TipModal tip={selectedTip} onClose={closeModal} />}
     </div>
   );
 };
 
 export default Tips;
+
