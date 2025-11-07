@@ -94,7 +94,7 @@ const UpdateTip = () => {
     formData.append("description", description);
     formData.append("category", category);
     deletedImages.forEach((public_id) => {
-      formData.append("deletedImages[]", public_id);
+      formData.append("deletedImages", public_id);
     });
     images.forEach((image) => {
       formData.append("images", image);

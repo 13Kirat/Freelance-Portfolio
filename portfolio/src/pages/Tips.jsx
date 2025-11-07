@@ -39,6 +39,7 @@ const Tips = () => {
   return (
     <div className="container mx-auto py-8">
       <h1 className="text-4xl font-bold text-center mb-8">Developer Tips</h1>
+      <p className="text-center">Number of tips: {tips.length}</p>
       <div className="flex justify-center mb-8">
         {categories.map((cat) => (
           <Button
@@ -57,13 +58,13 @@ const Tips = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredTips.map((tip) => (
             <Card key={tip._id} onClick={() => openModal(tip)} className="cursor-pointer">
-              {tip.images && tip.images[0] && (
+              {/* {tip.images && tip.images[0] && (
                 <img
                   src={tip.images[0].url}
                   alt={tip.title}
                   className="w-full h-48 object-cover"
                 />
-              )}
+              )} */}
               <CardHeader>
                 <CardTitle>{tip.title}</CardTitle>
               </CardHeader>
