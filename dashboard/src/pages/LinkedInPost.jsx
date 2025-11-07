@@ -5,8 +5,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "@/components/ui/use-toast";
-import SpecialLoadingButton from "../sub-components/SpecialLoadingButton";
 import { postToLinkedIn } from "../../store/slices/linkedinSlice";
+import SpecialLoadingButton from "./sub-components/SpecialLoadingButton";
 
 const LinkedInPost = () => {
   const [caption, setCaption] = useState("");
