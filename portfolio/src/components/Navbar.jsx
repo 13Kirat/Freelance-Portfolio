@@ -22,7 +22,7 @@ const Navbar = () => {
           <HashLink to="/#skills" className="font-medium flex items-center text-sm transition-colors hover:underline">
             Skills
           </HashLink>
-          <HashLink to="/#portfolio" className="font-medium flex items-center text-sm transition-colors hover:underline">
+          <HashLink to="/#projects" className="font-medium flex items-center text-sm transition-colors hover:underline">
             Portfolio
           </HashLink>
           <HashLink to="/#timeline" className="font-medium flex items-center text-sm transition-colors hover:underline">

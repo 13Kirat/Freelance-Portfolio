@@ -21,7 +21,7 @@ function App() {
 <Route path="/project/:id" element={<ProjectView />} />
           <Route path="/tips" element={<Tips />} />
         </Routes>
-        <Footer />
+        {/* <Footer /> */}
         <ToastContainer position="bottom-right" theme="dark" />
       </Router>
     </ThemeProvider>

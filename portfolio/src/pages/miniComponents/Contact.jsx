@@ -36,7 +36,7 @@ const Contact = () => {
   };
   return (
     <>
-      <div className="overflow-x-hidden">
+      <div className="overflow-x-hidden" id="contact">
         <div className="relative mb-8">
           <h1
             className="flex gap-4 items-center text-[1.85rem] sm:text-[2.75rem] md:text-[3rem] 

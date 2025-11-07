@@ -63,7 +63,7 @@ const AddSoftwareApplications = () => {
           <div className="space-y-12">
             <div className="border-b border-gray-900/10 pb-12">
               <h2 className="font-semibold leading-7 text-gray-900 text-3xl text-center">
-                ADD SOFTWARE APPLICATION
+                ADD TOOLS
               </h2>
               <div className="mt-10 flex flex-col gap-5">
                 <div className="w-full sm:col-span-4">
@@ -145,7 +145,7 @@ const AddSoftwareApplications = () => {
                 type="submit"
                 className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 w-full"
               >
-                Add Software Application
+                Add Tools
               </Button>
             ) : (
               <SpecialLoadingButton content="Adding Application" />

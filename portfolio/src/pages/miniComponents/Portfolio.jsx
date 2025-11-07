@@ -32,7 +32,7 @@ const Portfolio = () => {
   });
 
   return (
-    <div>
+    <div id="projects">
       <div className="relative mb-12">
         <h1
           className="hidden sm:flex gap-4 items-center text-[2rem] sm:text-[2.75rem] md:text-[3rem] 
@@ -44,7 +44,7 @@ const Portfolio = () => {
         >
           MY{" "}
           <span className="text-tubeLight-effect font-extrabold">
-            PORTFOLIO
+            PROJECTS
           </span>
         </h1>
         <h1

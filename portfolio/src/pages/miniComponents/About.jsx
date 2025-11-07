@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 const About = () => {
   return (
-    <div className="w-full flex flex-col overflow-x-hidden">
+    <div className="w-full flex flex-col overflow-x-hidden" id="about">
       <div className="relative">
         <h1
           className="flex gap-4 items-center text-[2rem] sm:text-[2.75rem] 
@@ -25,25 +25,25 @@ const About = () => {
         <div className="grid md:grid-cols-2 my-8 sm:my-20 gap-14">
           <div className="flex justify-center items-center">
             <img
-              src="../../../public/studio.png"
+              src="/photo.jpg"
               alt="avatar"
               className="bg-white p-2 sm:p-4 rotate-[25deg] h-[240px] sm:h-[340px] md:h-[350px] lg:h-[450px]"
             />
           </div>
           <div className="flex justify-center flex-col tracking-[1px] text-xl gap-5">
             <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ducimus fuga ex nobis possimus in saepe, natus ipsam non maiores, atque nemo asperiores quas cum doloribus officia ipsum! Consectetur, vero tempora.
+              I am Dr. Anil Singh, faculty in the Department of Electronics and Communication Engineering at Thapar Institute of Engineering and Technology, Patiala. My research focuses on Mixed-Signal Design, targeting smart, high-speed, and high-resolution ADCs for deep sub-micron CMOS technologies.
             </p>
             <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laudantium, atque adipisci similique excepturi nobis maxime accusantium ullam. Laudantium sit praesentium saepe corrupti voluptate. Omnis reprehenderit fugiat praesentium blanditiis. Ex, fugit.
+              I aim to create low-power, low-area, and cost-effective converters that remain robust against PVT variations through AI-driven adaptability. My vision is to bridge analog precision with AI intelligence, shaping the next generation of smarter, scalable, and energy-efficient mixed-signal systems.
             </p>
           </div>
         </div>
-        <p className="tracking-[1px] text-xl">
+        {/* <p className="tracking-[1px] text-xl">
           My dedication and perseverance in timely delivery of work are integral
           to me. I maintain the courage to face any challenges for extended
           periods.
-        </p>
+        </p> */}
       </div>
     </div>
   );

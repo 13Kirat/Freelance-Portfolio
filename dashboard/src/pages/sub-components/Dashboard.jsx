@@ -251,7 +251,7 @@ const Dashboard = () => {
               <TabsContent className="grid min-[1050px]:grid-cols-2 gap-4">
                 <Card>
                   <CardHeader className="px-7">
-                    <CardTitle>Software Applications</CardTitle>
+                    <CardTitle>TOOLS</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <Table>

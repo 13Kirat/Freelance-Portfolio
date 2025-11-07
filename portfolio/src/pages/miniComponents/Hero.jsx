@@ -33,14 +33,14 @@ const Hero = () => {
   }, []);
 
   return (
-    <div className="w-full">
+    <div className="w-full" id="home">
       <div className="flex items-center gap-2 mb-2">
         <span className="bg-green-400 rounded-full h-2 w-2"></span>
         <p>Online</p>
       </div>
       <h1 className="overflow-x-hidden text-[1.3rem] sm:text-[1.75rem] 
       md:text-[2.2rem] lg:text-[2.8rem] tracking-[2px] mb-4">
-        Hey, I'm Gurkirat Singh
+        Hey, I'm Dr. Anil Singh
       </h1>
       <h1 className="text-tubeLight-effect overflow-x-hidden text-[1.3rem] 
       sm:text-[1.75rem] md:text-[2.2rem] lg:text-[2.8rem] tracking-[15px]">
@@ -80,14 +80,14 @@ const Hero = () => {
             <span>Github</span>
           </Button>
         </Link>
-        <Link to={user?.resume && user?.resume.url} target="_blank">
+        {/* <Link to={user?.resume && user?.resume.url} target="_blank">
           <Button className="rounded-[30px] flex items-center gap-2 flex-row">
             <span>
               <ExternalLink />
             </span>
             <span>Resume </span>
           </Button>
-        </Link>
+        </Link> */}
       </div>
       <p className="mt-8 text-xl tracking-[2px]">{user?.aboutMe}</p>
       <hr className="my-8 md::my-10 " />

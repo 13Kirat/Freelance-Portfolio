@@ -6,7 +6,7 @@ import { v2 as cloudinary } from "cloudinary";
 export const addNewApplication = catchAsyncErrors(async (req, res, next) => {
   if (!req.files || Object.keys(req.files).length === 0) {
     return next(
-      new ErrorHandler("Software Application Icon/Image Required!", 404)
+      new ErrorHandler("Tool Icon/Image Required!", 404)
     );
   }
   const { svg } = req.files;
@@ -34,7 +34,7 @@ export const addNewApplication = catchAsyncErrors(async (req, res, next) => {
   });
   res.status(201).json({
     success: true,
-    message: "New Software Application Added!",
+    message: "New Tool Added!",
     softwareApplication,
   });
 });
@@ -50,7 +50,7 @@ export const deleteApplication = catchAsyncErrors(async (req, res, next) => {
   await softwareApplication.deleteOne();
   res.status(200).json({
     success: true,
-    message: "Software Application Deleted!",
+    message: "Tool Deleted!",
   });
 });
 
