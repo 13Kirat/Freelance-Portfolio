@@ -16,6 +16,8 @@ export const addNewProject = catchAsyncErrors(async (req, res, next) => {
     stack,
     technologies,
     deployed,
+    category,
+    status,
   } = req.body;
   if (
     !title ||
@@ -24,7 +26,9 @@ export const addNewProject = catchAsyncErrors(async (req, res, next) => {
     !projectLink ||
     !stack ||
     !technologies ||
-    !deployed
+    !deployed ||
+    !category ||
+    !status
   ) {
     return next(new ErrorHandler("Please Provide All Details!", 400));
   }
@@ -47,6 +51,8 @@ export const addNewProject = catchAsyncErrors(async (req, res, next) => {
     stack,
     technologies,
     deployed,
+    category,
+    status,
     projectBanner: {
       public_id: cloudinaryResponse.public_id, // Set your cloudinary public_id here
       url: cloudinaryResponse.secure_url, // Set your cloudinary secure_url here
@@ -68,6 +74,8 @@ export const updateProject = catchAsyncErrors(async (req, res, next) => {
     deployed: req.body.deployed,
     projectLink: req.body.projectLink,
     gitRepoLink: req.body.gitRepoLink,
+    category: req.body.category,
+    status: req.body.status,
   };
   if (req.files && req.files.projectBanner) {
     const projectBanner = req.files.projectBanner;

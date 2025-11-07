@@ -24,6 +24,14 @@ const Tips = () => {
     setSelectedTip(tip);
   };
 
+  const truncateDescription = (description) => {
+    const words = description.split(" ");
+    if (words.length > 70) {
+      return words.slice(0, 70).join(" ") + "...";
+    }
+    return description;
+  };
+
   const closeModal = () => {
     setSelectedTip(null);
   };
@@ -61,7 +69,7 @@ const Tips = () => {
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-muted-foreground">{tip.category}</p>
-                <p className="mt-4 truncate">{tip.description}</p>
+                <p className="mt-4">{truncateDescription(tip.description)}</p>
               </CardContent>
             </Card>
           ))}

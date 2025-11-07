@@ -14,6 +14,8 @@ const ProjectView = () => {
   const [projectLink, setProjectLink] = useState("");
   const [projectBanner, setProjectBanner] = useState("");
   const [projectBannerPreview, setProjectBannerPreview] = useState("");
+  const [category, setCategory] = useState("");
+  const [status, setStatus] = useState("");
   const { id } = useParams();
 
   useEffect(() => {
@@ -36,6 +38,8 @@ const ProjectView = () => {
           setProjectBannerPreview(
             res.data.project.projectBanner && res.data.project.projectBanner.url
           );
+          setCategory(res.data.project.category);
+          setStatus(res.data.project.status);
         })
         .catch((error) => {
           toast.error(error.response.data.message);
@@ -99,6 +103,14 @@ const ProjectView = () => {
                 <div className="w-full sm:col-span-4">
                   <p className="text-2xl mb-2">Deployed:</p>
                   <p>{deployed}</p>
+                </div>
+                <div className="w-full sm:col-span-4">
+                  <p className="text-2xl mb-2">Category:</p>
+                  <p>{category}</p>
+                </div>
+                <div className="w-full sm:col-span-4">
+                  <p className="text-2xl mb-2">Status:</p>
+                  <p>{status}</p>
                 </div>
                 <div className="w-full sm:col-span-4">
                   <p className="text-2xl mb-2">Github Repository Link:</p>

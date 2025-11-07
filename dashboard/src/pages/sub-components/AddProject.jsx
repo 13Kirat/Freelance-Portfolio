@@ -28,6 +28,8 @@ const AddProject = () => {
   const [technologies, setTechnologies] = useState("");
   const [stack, setStack] = useState("");
   const [deployed, setDeployed] = useState("");
+  const [category, setCategory] = useState("");
+  const [status, setStatus] = useState("");
 
   const handleSvg = (e) => {
     const file = e.target.files[0];
@@ -52,6 +54,8 @@ const AddProject = () => {
     formData.append("stack", stack);
     formData.append("deployed", deployed);
     formData.append("projectBanner", projectBanner);
+    formData.append("category", category);
+    formData.append("status", status);
     dispatch(addNewProject(formData));
   };
   useEffect(() => {
@@ -172,6 +176,49 @@ const AddProject = () => {
                     </div>
                   </div>
                 </div>
+
+                <div className="w-full sm:col-span-4">
+                  <label className="block text-sm font-medium leading-6 text-gray-900">
+                    Category
+                  </label>
+                  <div className="mt-2">
+                    <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600">
+                      <input
+                        type="text"
+                        className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+                        placeholder="Project Category"
+                        value={category}
+                        onChange={(e) => setCategory(e.target.value)}
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <div className="w-full sm:col-span-4">
+                  <label className="block text-sm font-medium leading-6 text-gray-900">
+                    Status
+                  </label>
+                  <div className="mt-2">
+                    <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600">
+                      <Select
+                        value={status}
+                        onValueChange={(selectedValue) =>
+                          setStatus(selectedValue)
+                        }
+                      >
+                        <SelectTrigger>
+                          <SelectValue placeholder="Select Project Status" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="Ongoing">Ongoing</SelectItem>
+                          <SelectItem value="Completed">Completed</SelectItem>
+                          <SelectItem value="Archived">Archived</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
+                  </div>
+                </div>
+
 
                 <div className="w-full sm:col-span-4">
                   <label className="block text-sm font-medium leading-6 text-gray-900">

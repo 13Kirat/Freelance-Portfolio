@@ -8,6 +8,15 @@ const projectSchema = new mongoose.Schema({
   technologies: String,
   stack: String,
   deployed: String,
+  category: {
+    type: String,
+    required: true,
+  },
+  status: {
+    type: String,
+    enum: ["Ongoing", "Completed", "Archived"],
+    default: "Completed",
+  },
   projectBanner: {
     public_id: {
       type: String,
