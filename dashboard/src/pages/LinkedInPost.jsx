@@ -1,12 +1,12 @@
 
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { toast } from "@/components/ui/use-toast";
 import SpecialLoadingButton from "./sub-components/SpecialLoadingButton";
 import { postToLinkedIn } from "@/store/slices/linkedinSlice";
+import { Textarea } from "@/components/ui/textarea";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { toast } from "react-toastify";
 
 const LinkedInPost = () => {
   const [caption, setCaption] = useState("");
