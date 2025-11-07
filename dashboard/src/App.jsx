@@ -23,6 +23,7 @@ import ViewProject from "./pages/ViewProject";
 import ManageTips from "./pages/ManageTips";
 import UpdateTip from "./pages/UpdateTip";
 import ViewTip from "./pages/ViewTip";
+import LinkedInPost from "./pages/LinkedInPost";
 
 function App() {
   const dispatch = useDispatch();
@@ -51,6 +52,7 @@ function App() {
 <Route path="/manage/tips" element={<ManageTips />} />
         <Route path="/update/tip/:id" element={<UpdateTip />} />
         <Route path="/view/tip/:id" element={<ViewTip />} />
+        <Route path="/linkedin-post" element={<LinkedInPost />} />
       </Routes>
       <ToastContainer position="bottom-right" theme="dark" />
     </Router>

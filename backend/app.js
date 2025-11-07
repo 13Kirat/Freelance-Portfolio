@@ -12,6 +12,7 @@ import skillRouter from "./routes/skillRouter.js";
 import softwareApplicationRouter from "./routes/softwareApplicationRouter.js";
 import projectRouter from "./routes/projectRouter.js";
 import tipRouter from "./routes/tipRouter.js";
+import linkedinRouter from "./routes/linkedinRouter.js";
 
 const app = express();
 dotenv.config();
@@ -42,6 +43,7 @@ app.use("/api/v1/skill", skillRouter);
 app.use("/api/v1/softwareapplication", softwareApplicationRouter);
 app.use("/api/v1/project", projectRouter);
 app.use("/api/v1/tip", tipRouter);
+app.use("/api/v1/linkedin", linkedinRouter);
 
 dbConnection();
 app.use(errorMiddleware);

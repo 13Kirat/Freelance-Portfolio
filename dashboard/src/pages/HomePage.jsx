@@ -13,6 +13,7 @@ import {
   Lightbulb,
   LightbulbOff,
   LightbulbIcon,
+  Linkedin,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
@@ -35,6 +36,7 @@ import Messages from "./sub-components/Messages";
 import AddTimeline from "./sub-components/AddTimeline";
 import AddTip from "./sub-components/AddTip";
 import ManageTips from "./ManageTips";
+import LinkedInPost from "./LinkedInPost";
 
 const HomePage = () => {
   const [active, setActive] = useState("");
@@ -66,11 +68,10 @@ const HomePage = () => {
             <Tooltip>
               <TooltipTrigger asChild>
                 <Link
-                  className={`flex h-9 w-9 items-center justify-center rounded-lg ${
-                    active === "Dashboard"
-                      ? "text-accent-foreground bg-accent"
-                      : "text-muted-foreground"
-                  }  transition-colors hover:text-foreground md:h-8 md:w-8`}
+                  className={`flex h-9 w-9 items-center justify-center rounded-lg ${active === "Dashboard"
+                    ? "text-accent-foreground bg-accent"
+                    : "text-muted-foreground"
+                    }  transition-colors hover:text-foreground md:h-8 md:w-8`}
                   onClick={() => setActive("Dashboard")}
                 >
                   <Home className="h-5 w-5" />
@@ -85,11 +86,10 @@ const HomePage = () => {
             <Tooltip>
               <TooltipTrigger asChild>
                 <Link
-                  className={`flex h-9 w-9 items-center justify-center rounded-lg ${
-                    active === "Add Project"
-                      ? "text-accent-foreground bg-accent"
-                      : "text-muted-foreground"
-                  }  transition-colors hover:text-foreground md:h-8 md:w-8`}
+                  className={`flex h-9 w-9 items-center justify-center rounded-lg ${active === "Add Project"
+                    ? "text-accent-foreground bg-accent"
+                    : "text-muted-foreground"
+                    }  transition-colors hover:text-foreground md:h-8 md:w-8`}
                   onClick={() => setActive("Add Project")}
                 >
                   <FolderGit className="h-5 w-5" />
@@ -104,11 +104,10 @@ const HomePage = () => {
             <Tooltip>
               <TooltipTrigger asChild>
                 <Link
-                  className={`flex h-9 w-9 items-center justify-center rounded-lg ${
-                    active === "Add Skill"
-                      ? "text-accent-foreground bg-accent"
-                      : "text-muted-foreground"
-                  }  transition-colors hover:text-foreground md:h-8 md:w-8`}
+                  className={`flex h-9 w-9 items-center justify-center rounded-lg ${active === "Add Skill"
+                    ? "text-accent-foreground bg-accent"
+                    : "text-muted-foreground"
+                    }  transition-colors hover:text-foreground md:h-8 md:w-8`}
                   onClick={() => setActive("Add Skill")}
                 >
                   <PencilRuler className="h-5 w-5" />
@@ -123,11 +122,10 @@ const HomePage = () => {
             <Tooltip>
               <TooltipTrigger asChild>
                 <Link
-                  className={`flex h-9 w-9 items-center justify-center rounded-lg ${
-                    active === "Add Tip"
-                      ? "text-accent-foreground bg-accent"
-                      : "text-muted-foreground"
-                  }  transition-colors hover:text-foreground md:h-8 md:w-8`}
+                  className={`flex h-9 w-9 items-center justify-center rounded-lg ${active === "Add Tip"
+                    ? "text-accent-foreground bg-accent"
+                    : "text-muted-foreground"
+                    }  transition-colors hover:text-foreground md:h-8 md:w-8`}
                   onClick={() => setActive("Add Tip")}
                 >
                   <Lightbulb className="h-5 w-5" />
@@ -142,11 +140,10 @@ const HomePage = () => {
             <Tooltip>
               <TooltipTrigger asChild>
                 <Link
-                  className={`flex h-9 w-9 items-center justify-center rounded-lg ${
-                    active === "Add Uses"
-                      ? "text-accent-foreground bg-accent"
-                      : "text-muted-foreground"
-                  }  transition-colors hover:text-foreground md:h-8 md:w-8`}
+                  className={`flex h-9 w-9 items-center justify-center rounded-lg ${active === "Add Uses"
+                    ? "text-accent-foreground bg-accent"
+                    : "text-muted-foreground"
+                    }  transition-colors hover:text-foreground md:h-8 md:w-8`}
                   onClick={() => setActive("Add Uses")}
                 >
                   <LayoutGrid className="h-5 w-5" />
@@ -160,11 +157,10 @@ const HomePage = () => {
             <Tooltip>
               <TooltipTrigger asChild>
                 <Link
-                  className={`flex h-9 w-9 items-center justify-center rounded-lg ${
-                    active === "Add Timeline"
-                      ? "text-accent-foreground bg-accent"
-                      : "text-muted-foreground"
-                  }  transition-colors hover:text-foreground md:h-8 md:w-8`}
+                  className={`flex h-9 w-9 items-center justify-center rounded-lg ${active === "Add Timeline"
+                    ? "text-accent-foreground bg-accent"
+                    : "text-muted-foreground"
+                    }  transition-colors hover:text-foreground md:h-8 md:w-8`}
                   onClick={() => setActive("Add Timeline")}
                 >
                   <History className="h-5 w-5" />
@@ -178,11 +174,10 @@ const HomePage = () => {
             <Tooltip>
               <TooltipTrigger asChild>
                 <Link
-                  className={`flex h-9 w-9 items-center justify-center rounded-lg ${
-                    active === "Messages"
-                      ? "text-accent-foreground bg-accent"
-                      : "text-muted-foreground"
-                  }  transition-colors hover:text-foreground md:h-8 md:w-8`}
+                  className={`flex h-9 w-9 items-center justify-center rounded-lg ${active === "Messages"
+                    ? "text-accent-foreground bg-accent"
+                    : "text-muted-foreground"
+                    }  transition-colors hover:text-foreground md:h-8 md:w-8`}
                   onClick={() => setActive("Messages")}
                 >
                   <MessageSquareMore className="h-5 w-5" />
@@ -196,11 +191,10 @@ const HomePage = () => {
             <Tooltip>
               <TooltipTrigger asChild>
                 <Link
-                  className={`flex h-9 w-9 items-center justify-center rounded-lg ${
-                    active === "Manage Tip"
-                      ? "text-accent-foreground bg-accent"
-                      : "text-muted-foreground"
-                  }  transition-colors hover:text-foreground md:h-8 md:w-8`}
+                  className={`flex h-9 w-9 items-center justify-center rounded-lg ${active === "Manage Tip"
+                    ? "text-accent-foreground bg-accent"
+                    : "text-muted-foreground"
+                    }  transition-colors hover:text-foreground md:h-8 md:w-8`}
                   onClick={() => setActive("Manage Tip")}
                 >
                   <Lightbulb className="h-5 w-5" />
@@ -214,11 +208,27 @@ const HomePage = () => {
             <Tooltip>
               <TooltipTrigger asChild>
                 <Link
-                  className={`flex h-9 w-9 items-center justify-center rounded-lg ${
-                    active === "Account"
-                      ? "text-accent-foreground bg-accent"
-                      : "text-muted-foreground"
-                  }  transition-colors hover:text-foreground md:h-8 md:w-8`}
+                  className={`flex h-9 w-9 items-center justify-center rounded-lg ${active === "LinkedIn"
+                    ? "text-accent-foreground bg-accent"
+                    : "text-muted-foreground"
+                    }  transition-colors hover:text-foreground md:h-8 md:w-8`}
+                  onClick={() => setActive("LinkedIn")}
+                >
+                  <Linkedin className="h-5 w-5" />
+                  <span className="sr-only">Post On LinkedIn</span>
+                </Link>
+              </TooltipTrigger>
+              <TooltipContent side="right">Post On LinkedIn</TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Link
+                  className={`flex h-9 w-9 items-center justify-center rounded-lg ${active === "Account"
+                    ? "text-accent-foreground bg-accent"
+                    : "text-muted-foreground"
+                    }  transition-colors hover:text-foreground md:h-8 md:w-8`}
                   onClick={() => setActive("Account")}
                 >
                   <User className="h-5 w-5" />
@@ -264,103 +274,104 @@ const HomePage = () => {
               </Link>
               <Link
                 href="#"
-                className={`flex items-center gap-4 px-2.5 ${
-                  active === "Dashboard"
-                    ? "text-foreground"
-                    : "text-muted-foreground hover:text-foreground "
-                }`}
+                className={`flex items-center gap-4 px-2.5 ${active === "Dashboard"
+                  ? "text-foreground"
+                  : "text-muted-foreground hover:text-foreground "
+                  }`}
                 onClick={() => setActive("Dashboard")}
               >
                 <Home className="h-5 w-5" />
                 Dashboard
               </Link>
               <Link
-                className={`flex items-center gap-4 px-2.5 ${
-                  active === "Add Project"
-                    ? "text-foreground"
-                    : "text-muted-foreground hover:text-foreground "
-                }`}
+                className={`flex items-center gap-4 px-2.5 ${active === "Add Project"
+                  ? "text-foreground"
+                  : "text-muted-foreground hover:text-foreground "
+                  }`}
                 onClick={() => setActive("Add Project")}
               >
                 <FolderGit className="h-5 w-5" />
                 Add Project
               </Link>
               <Link
-                className={`flex items-center gap-4 px-2.5 ${
-                  active === "Add Skill"
-                    ? "text-foreground"
-                    : "text-muted-foreground hover:text-foreground "
-                }`}
+                className={`flex items-center gap-4 px-2.5 ${active === "Add Skill"
+                  ? "text-foreground"
+                  : "text-muted-foreground hover:text-foreground "
+                  }`}
                 onClick={() => setActive("Add Skill")}
               >
                 <PencilRuler className="h-5 w-5" />
                 Add Skill
               </Link>
               <Link
-                className={`flex items-center gap-4 px-2.5 ${
-                  active === "Add Tip"
-                    ? "text-foreground"
-                    : "text-muted-foreground hover:text-foreground "
-                }`}
+                className={`flex items-center gap-4 px-2.5 ${active === "Add Tip"
+                  ? "text-foreground"
+                  : "text-muted-foreground hover:text-foreground "
+                  }`}
                 onClick={() => setActive("Add Tip")}
               >
                 <Lightbulb className="h-5 w-5" />
                 Add Tip
               </Link>
               <Link
-                className={`flex items-center gap-4 px-2.5 ${
-                  active === "Add Uses"
-                    ? "text-foreground"
-                    : "text-muted-foreground hover:text-foreground "
-                }`}
+                className={`flex items-center gap-4 px-2.5 ${active === "Add Uses"
+                  ? "text-foreground"
+                  : "text-muted-foreground hover:text-foreground "
+                  }`}
                 onClick={() => setActive("Add Uses")}
               >
                 <LayoutGrid className="h-5 w-5" />
                 Add Uses
               </Link>
               <Link
-                className={`flex items-center gap-4 px-2.5 ${
-                  active === "Profile"
-                    ? "text-foreground"
-                    : "text-muted-foreground hover:text-foreground "
-                }`}
+                className={`flex items-center gap-4 px-2.5 ${active === "Profile"
+                  ? "text-foreground"
+                  : "text-muted-foreground hover:text-foreground "
+                  }`}
                 onClick={() => setActive("Account")}
               >
                 <User className="h-5 w-5" />
                 Account
               </Link>
               <Link
-                className={`flex items-center gap-4 px-2.5 ${
-                  active === "Timeline"
-                    ? "text-foreground"
-                    : "text-muted-foreground hover:text-foreground "
-                }`}
+                className={`flex items-center gap-4 px-2.5 ${active === "Timeline"
+                  ? "text-foreground"
+                  : "text-muted-foreground hover:text-foreground "
+                  }`}
                 onClick={() => setActive("Timeline")}
               >
                 <History className="h-5 w-5" />
                 Timeline
               </Link>
               <Link
-                className={`flex items-center gap-4 px-2.5 ${
-                  active === "Messages"
-                    ? "text-foreground"
-                    : "text-muted-foreground hover:text-foreground "
-                }`}
+                className={`flex items-center gap-4 px-2.5 ${active === "Messages"
+                  ? "text-foreground"
+                  : "text-muted-foreground hover:text-foreground "
+                  }`}
                 onClick={() => setActive("Messages")}
               >
                 <MessageSquareMore className="h-5 w-5" />
                 Messages
               </Link>
               <Link
-                className={`flex items-center gap-4 px-2.5 ${
-                  active === "Manage Tip"
-                    ? "text-foreground"
-                    : "text-muted-foreground hover:text-foreground "
-                }`}
+                className={`flex items-center gap-4 px-2.5 ${active === "Manage Tip"
+                  ? "text-foreground"
+                  : "text-muted-foreground hover:text-foreground "
+                  }`}
                 onClick={() => setActive("Manage Tip")}
               >
                 <LightbulbIcon className="h-5 w-5" />
                 Manage Tips
+              </Link>
+              <Link
+                className={`flex items-center gap-4 px-2.5 ${active === "LinkedIn"
+                  ? "text-foreground"
+                  : "text-muted-foreground hover:text-foreground "
+                  }`}
+                onClick={() => setActive("LinkedIn")}
+              >
+                <Linkedin className="h-5 w-5" />
+                Post On LinkedIn
               </Link>
               <Link
                 className={
@@ -414,6 +425,9 @@ const HomePage = () => {
             break;
           case "Manage Tip":
             return <ManageTips />;
+            break;
+          case "LinkedIn":
+            return <LinkedInPost />;
             break;
           default:
             return <Dashboard />;

@@ -266,7 +266,7 @@ const Dashboard = () => {
                       </TableHeader>
                       <TableBody>
                         {softwareApplications &&
-                        softwareApplications.length > 0 ? (
+                          softwareApplications.length > 0 ? (
                           softwareApplications.map((element) => {
                             return (
                               <TableRow className="bg-accent" key={element._id}>

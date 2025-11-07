@@ -7,6 +7,7 @@ import timelineReducer from "./slices/timelineSlice";
 import softwareApplicationReducer from "./slices/softwareApplicationSlice";
 import messageReducer from "./slices/messageSlice";
 import tipReducer from "./slices/tipSlice.js";
+import linkedInReducer from "./slices/linkedinSlice.js";
 
 export const store = configureStore({
   reducer: {
@@ -18,5 +19,6 @@ export const store = configureStore({
     softwareApplications: softwareApplicationReducer,
     messages: messageReducer,
     tip: tipReducer,
+    linkedIn: linkedInReducer,
   },
 });
