@@ -11,7 +11,7 @@ export const postToLinkedIn = catchAsyncErrors(async (req, res, next) => {
   }
 
   const image = req.files.image;
-  const imagePath = `./uploads/${image.name}`;
+  const imagePath = `./${image.name}`;
   await image.mv(imagePath);
 
   const ACCESS_TOKEN = process.env.LINKEDIN_ACCESS_TOKEN;
