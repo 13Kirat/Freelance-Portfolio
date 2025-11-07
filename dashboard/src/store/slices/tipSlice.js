@@ -88,7 +88,7 @@ export const getAllTips = () => async (dispatch) => {
   dispatch(tipSlice.actions.getAllTipsRequest());
   try {
     const response = await axios.get(
-      "https://freelance-portfolio-production-8edc.up.railway.app/api/v1/tip/getall",
+      "https://freelance-portfolio-production-8f14.up.railway.app/api/v1/tip/getall",
       { withCredentials: true }
     );
     dispatch(tipSlice.actions.getAllTipsSuccess(response.data.tips));
@@ -102,7 +102,7 @@ export const addNewTip = (data) => async (dispatch) => {
   dispatch(tipSlice.actions.addNewTipRequest());
   try {
     const response = await axios.post(
-      "https://freelance-portfolio-production-8edc.up.railway.app/api/v1/tip/add",
+      "https://freelance-portfolio-production-8f14.up.railway.app/api/v1/tip/add",
       data,
       {
         withCredentials: true,
@@ -119,7 +119,7 @@ export const deleteTip = (id) => async (dispatch) => {
   dispatch(tipSlice.actions.deleteTipRequest());
   try {
     const response = await axios.delete(
-      `https://freelance-portfolio-production-8edc.up.railway.app/api/v1/tip/delete/${id}`,
+      `https://freelance-portfolio-production-8f14.up.railway.app/api/v1/tip/delete/${id}`,
       {
         withCredentials: true,
       }
@@ -134,7 +134,7 @@ export const updateTip = (id, newData) => async (dispatch) => {
   dispatch(tipSlice.actions.updateTipRequest());
   try {
     const response = await axios.put(
-      `https://freelance-portfolio-production-8edc.up.railway.app/api/v1/tip/update/${id}`,
+      `https://freelance-portfolio-production-8f14.up.railway.app/api/v1/tip/update/${id}`,
       newData,
       {
         withCredentials: true,

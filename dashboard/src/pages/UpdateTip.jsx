@@ -37,7 +37,7 @@ const UpdateTip = () => {
   useEffect(() => {
     const getTip = async () => {
       await axios
-        .get(`https://freelance-portfolio-production-8edc.up.railway.app/api/v1/tip/get/${id}`, {
+        .get(`https://freelance-portfolio-production-8f14.up.railway.app/api/v1/tip/get/${id}`, {
           withCredentials: true,
         })
         .then((res) => {

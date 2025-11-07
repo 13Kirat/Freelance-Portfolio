@@ -72,7 +72,7 @@ export const getAllTimeline = () => async (dispatch) => {
   dispatch(timelineSlice.actions.getAllTimelineRequest());
   try {
     const response = await axios.get(
-      "https://freelance-portfolio-production-8edc.up.railway.app/api/v1/timeline/getall",
+      "https://freelance-portfolio-production-8f14.up.railway.app/api/v1/timeline/getall",
       { withCredentials: true }
     );
     dispatch(
@@ -90,7 +90,7 @@ export const addNewTimeline = (data) => async (dispatch) => {
   dispatch(timelineSlice.actions.addNewTimelineRequest());
   try {
     const response = await axios.post(
-      "https://freelance-portfolio-production-8edc.up.railway.app/api/v1/timeline/add",
+      "https://freelance-portfolio-production-8f14.up.railway.app/api/v1/timeline/add",
       data,
       {
         withCredentials: true,
@@ -111,7 +111,7 @@ export const deleteTimeline = (id) => async (dispatch) => {
   dispatch(timelineSlice.actions.deleteTimelineRequest());
   try {
     const response = await axios.delete(
-      `https://freelance-portfolio-production-8edc.up.railway.app/api/v1/timeline/delete/${id}`,
+      `https://freelance-portfolio-production-8f14.up.railway.app/api/v1/timeline/delete/${id}`,
       {
         withCredentials: true,
       }

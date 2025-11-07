@@ -34,7 +34,7 @@ export const getAllTips = () => async (dispatch) => {
   dispatch(tipSlice.actions.getAllTipsRequest());
   try {
     const response = await axios.get(
-      "https://freelance-portfolio-production-8edc.up.railway.app/api/v1/tip/getall",
+      "https://freelance-portfolio-production-8f14.up.railway.app/api/v1/tip/getall",
       { withCredentials: true }
     );
     dispatch(tipSlice.actions.getAllTipsSuccess(response.data.tips));

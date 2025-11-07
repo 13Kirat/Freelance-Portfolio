@@ -19,7 +19,7 @@ const ProjectView = () => {
   useEffect(() => {
     const getProject = async () => {
       await axios
-        .get(`https://freelance-portfolio-production-8edc.up.railway.app/api/v1/project/get/${id}`, {
+        .get(`https://freelance-portfolio-production-8f14.up.railway.app/api/v1/project/get/${id}`, {
           withCredentials: true,
         })
         .then((res) => {
