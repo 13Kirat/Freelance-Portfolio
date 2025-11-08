@@ -38,7 +38,7 @@ const ProjectView = () => {
         setProjectBannerPreview(p.projectBanner?.url || "");
         setCategory(p.category);
         setStatus(p.status);
-      } catch (error: any) {
+      } catch (error) {
         toast.error(error.response?.data?.message || "Failed to load project");
       }
     };
