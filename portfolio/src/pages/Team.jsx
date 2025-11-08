@@ -1,8 +1,7 @@
+import { Card, CardContent } from "@/components/ui/card";
+import { getAllTeamMembers } from "@/store/slices/teamSlice";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllTeamMembers } from "../store/slices/teamSlice";
-import { Card, CardContent } from "../components/ui/card";
-import { toast } from "react-hot-toast";
 
 const Team = () => {
   const dispatch = useDispatch();
@@ -14,7 +13,7 @@ const Team = () => {
 
   useEffect(() => {
     if (error) {
-      toast.error(error);
+      console.log(error)
     }
   }, [error]);
 
