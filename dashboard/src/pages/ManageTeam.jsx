@@ -135,9 +135,9 @@ const ManageTeam = () => {
                     </Button>
                   </DialogTrigger>
                   <DialogContent>
-                    <DialogHeader>
+                    <div className="">
                       <DialogTitle>Update Team Member</DialogTitle>
-                    </DialogHeader>
+                    </div>
                     <form
                       onSubmit={handleUpdateMember}
                       className="space-y-4 mt-4"
