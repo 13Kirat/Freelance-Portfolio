@@ -4,9 +4,9 @@ export const generateToken = (user, message, statusCode, req, res) => {
   res
     .status(statusCode)
     .cookie("token", token, {
-      expires: new Date(Date.now() + process.env.COOKIE_EXPIRE * 24 * 60 * 60 * 1000), // 5 days
+      expires: new Date(Date.now() + process.env.COOKIE_EXPIRE * 24 * 60 * 60 * 1000),
       httpOnly: true,
-      secure: isSecure, // Only set to true if request is HTTPS
+      secure: isSecure,
       sameSite: isSecure ? "strict" : "lax",
     })
     .json({
