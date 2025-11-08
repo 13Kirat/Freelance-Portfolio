@@ -16,6 +16,7 @@ import linkedinRouter from "./routes/linkedinRouter.js";
 
 const app = express();
 dotenv.config();
+app.set('trust proxy', true);
 
 app.use(
   cors({

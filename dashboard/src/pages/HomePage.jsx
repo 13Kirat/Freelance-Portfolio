@@ -45,6 +45,7 @@ const HomePage = () => {
   const handleLogout = () => {
     dispatch(logout());
     toast.success("Logged Out!");
+    navigateTo("/login");
   };
   const navigateTo = useNavigate();
   useEffect(() => {

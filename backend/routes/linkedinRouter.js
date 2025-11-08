@@ -5,6 +5,6 @@ import { isAuthenticated } from "../middlewares/auth.js";
 
 const router = express.Router();
 
-router.post("/post", postToLinkedIn);
+router.post("/post", isAuthenticated, postToLinkedIn);
 
 export default router;
