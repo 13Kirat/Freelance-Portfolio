@@ -9,6 +9,7 @@ import Footer from "./pages/miniComponents/Footer";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Navbar from "./components/Navbar";
+import Team from "./pages/Team";
 
 function App() {
   return (
@@ -18,8 +19,9 @@ function App() {
         {/* <ModeToggle /> */}
         <Routes>
           <Route path="/" element={<Home />} />
-<Route path="/project/:id" element={<ProjectView />} />
+          <Route path="/project/:id" element={<ProjectView />} />
           <Route path="/tips" element={<Tips />} />
+          <Route path="/team" element={<Team />} />
         </Routes>
         {/* <Footer /> */}
         <ToastContainer position="bottom-right" theme="dark" />

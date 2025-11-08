@@ -31,6 +31,9 @@ const Navbar = () => {
           <Link to="/tips" className="font-medium flex items-center text-sm transition-colors hover:underline">
             Tips
           </Link>
+          <Link to="/team" className="font-medium flex items-center text-sm transition-colors hover:underline">
+            Team
+          </Link>
           <HashLink to="/#contact" className="font-medium flex items-center text-sm transition-colors hover:underline">
             Contact
           </HashLink>
@@ -82,6 +85,12 @@ const Navbar = () => {
                 className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
               >
                 Tips
+              </Link>
+              <Link
+                to="/team"
+                className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
+              >
+                Team
               </Link>
               <HashLink
                 to="/#contact"

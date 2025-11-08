@@ -14,6 +14,7 @@ import {
   LightbulbOff,
   LightbulbIcon,
   Linkedin,
+  Users,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
@@ -37,6 +38,7 @@ import AddTimeline from "./sub-components/AddTimeline";
 import AddTip from "./sub-components/AddTip";
 import ManageTips from "./ManageTips";
 import LinkedInPost from "./LinkedInPost";
+import ManageTeam from "./ManageTeam";
 
 const HomePage = () => {
   const [active, setActive] = useState("");
@@ -226,6 +228,23 @@ const HomePage = () => {
             <Tooltip>
               <TooltipTrigger asChild>
                 <Link
+                  className={`flex h-9 w-9 items-center justify-center rounded-lg ${active === "Manage Team"
+                    ? "text-accent-foreground bg-accent"
+                    : "text-muted-foreground"
+                    }  transition-colors hover:text-foreground md:h-8 md:w-8`}
+                  onClick={() => setActive("Manage Team")}
+                >
+                  <Users className="h-5 w-5" />
+                  <span className="sr-only">Manage Team</span>
+                </Link>
+              </TooltipTrigger>
+              <TooltipContent side="right">Manage Team</TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Link
                   className={`flex h-9 w-9 items-center justify-center rounded-lg ${active === "Account"
                     ? "text-accent-foreground bg-accent"
                     : "text-muted-foreground"
@@ -375,6 +394,16 @@ const HomePage = () => {
                 Post On LinkedIn
               </Link>
               <Link
+                className={`flex items-center gap-4 px-2.5 ${active === "Manage Team"
+                  ? "text-foreground"
+                  : "text-muted-foreground hover:text-foreground "
+                  }`}
+                onClick={() => setActive("Manage Team")}
+              >
+                <Users className="h-5 w-5" />
+                Manage Team
+              </Link>
+              <Link
                 className={
                   "flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
                 }
@@ -429,6 +458,9 @@ const HomePage = () => {
             break;
           case "LinkedIn":
             return <LinkedInPost />;
+            break;
+          case "Manage Team":
+            return <ManageTeam />;
             break;
           default:
             return <Dashboard />;

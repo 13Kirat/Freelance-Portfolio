@@ -8,6 +8,7 @@ import softwareApplicationReducer from "./slices/softwareApplicationSlice";
 import messageReducer from "./slices/messageSlice";
 import tipReducer from "./slices/tipSlice.js";
 import linkedInReducer from "./slices/linkedinSlice.js";
+import teamReducer from "./slices/teamSlice.js";
 
 export const store = configureStore({
   reducer: {
@@ -20,5 +21,6 @@ export const store = configureStore({
     messages: messageReducer,
     tip: tipReducer,
     linkedIn: linkedInReducer,
+    team: teamReducer,
   },
 });
