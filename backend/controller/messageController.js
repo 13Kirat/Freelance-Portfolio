@@ -1,18 +1,29 @@
 import { Message } from "../models/messageSchema.js";
 import { catchAsyncErrors } from "../middlewares/catchAsyncErrors.js";
 import ErrorHandler from "../middlewares/error.js";
+import { sendEmail } from "../utils/sendEmail.js";
 
 export const sendMessage = catchAsyncErrors(async (req, res, next) => {
   const { senderName, subject, message } = req.body;
   if (!senderName || !subject || !message) {
     return next(new ErrorHandler("Please Fill Full Form!", 400));
   }
-  const data = await Message.create({ senderName, subject, message });
-  res.status(201).json({
-    success: true,
-    message: "Message Sent",
-    data,
-  });
+  try {
+    const data = await Message.create({ senderName, subject, message });
+    const emailOptions = {
+      email: process.env.MY_EMAIL,
+      subject: "New Message from Portfolio Contact Form",
+      message: `Sender: ${senderName}\nSubject: ${subject}\nMessage: ${message}`,
+    };
+    await sendEmail(emailOptions);
+    res.status(201).json({
+      success: true,
+      message: "Message Sent",
+      data,
+    });
+  } catch (error) {
+    return next(new ErrorHandler(error.message, 500));
+  }
 });
 
 export const deleteMessage = catchAsyncErrors(async (req, res, next) => {
