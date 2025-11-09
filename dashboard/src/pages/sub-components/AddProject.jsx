@@ -101,7 +101,7 @@ const AddProject = () => {
                 </div>
                 <div className="w-full sm:col-span-4">
                   <label className="block text-sm font-medium leading-6 text-gray-900">
-                    Description
+                    Description (Separated By Dot)
                   </label>
                   <div className="mt-2">
                     <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600">
@@ -115,7 +115,7 @@ const AddProject = () => {
                 </div>
                 <div className="w-full sm:col-span-4">
                   <label className="block text-sm font-medium leading-6 text-gray-900">
-                    Technologies Used In This Project
+                    Technologies Used In This Project (Separated By Comma)
                   </label>
                   <div className="mt-2">
                     <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600">

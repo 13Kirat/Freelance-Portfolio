@@ -22,17 +22,19 @@ const TipModal = ({ tip, onClose }) => {
         <CardContent className="pt-4">
           <p className="text-sm text-gray-400">{tip.category}</p>
           <p className="mt-3 text-gray-200 leading-relaxed">{tip.description}</p>
-
           {/* Images */}
           {tip.images && tip.images.length > 0 && (
             <div className="mt-5 grid grid-cols-2 gap-3">
-              {tip.images.map((image) => (
+              {tip.images.map((image, index) => (<>
+                <div className="font-semibold text-lg">Image {index + 1}.</div>
+
                 <img
                   key={image.public_id}
                   src={image.url}
                   alt={tip.title}
                   className="w-full h-32 object-cover rounded-lg border border-gray-700"
                 />
+              </>
               ))}
             </div>
           )}

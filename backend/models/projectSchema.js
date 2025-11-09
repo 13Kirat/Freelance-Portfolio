@@ -14,7 +14,6 @@ const projectSchema = new mongoose.Schema({
   },
   status: {
     type: String,
-    enum: ["Ongoing", "Completed", "Archived"],
     default: "Completed",
   },
   projectBanner: {
