@@ -58,7 +58,7 @@ const UpdateTip = () => {
   useEffect(() => {
     const getTip = async () => {
       await axios
-        .get(`${import.meta.env.VITE_API_BASE_URL}/api/v1/tip/get/${id}`, {
+        .get(`https://freelance-portfolio-production-8f14.up.railway.app/api/v1/tip/get/${id}`, {
           withCredentials: true,
         })
         .then((res) => {
@@ -128,7 +128,7 @@ const UpdateTip = () => {
               <div className="mt-10 flex flex-col gap-5">
                 <div className="w-full sm:col-span-4">
                   <label className="block text-sm font-medium leading-6 text-gray-900">
-                    Images
+                    Images (Can refer with Image 1, Image 2...)
                   </label>
                   <div className="mt-2 flex flex-wrap gap-4">
                     {existingImages.map((image, index) => (
@@ -154,7 +154,7 @@ const UpdateTip = () => {
                           alt={`new-tip-${index}`}
                           className="w-32 h-32 object-cover"
                         />
-                         <Button
+                        <Button
                           type="button"
                           className="absolute top-0 right-0 bg-red-500 text-white p-1 rounded-full"
                           onClick={() => removeImage(index, false)}
