@@ -55,9 +55,9 @@ const Hero = () => {
       </h1>
       <div className="w-fit px-5 py-2 bg-slate-50 rounded-[20px] flex gap-5 
       items-center mt-4 md:mt-8 lg:mt-10">
-        <Link to={"https://www.youtube.com"} target="_blank">
+        {/* <Link to={"https://www.youtube.com"} target="_blank">
           <Youtube className="text-red-500 w-7 h-7" />
-        </Link>
+        </Link> */}
         {user?.instagramURL && <Link to={user?.instagramURL} target="_blank">
           <Instagram className="text-pink-500 w-7 h-7" />
         </Link>}
