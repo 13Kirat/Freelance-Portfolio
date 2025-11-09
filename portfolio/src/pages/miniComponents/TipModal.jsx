@@ -26,7 +26,7 @@ const TipModal = ({ tip, onClose }) => {
           {tip.images && tip.images.length > 0 && (
             <div className="mt-5 grid grid-cols-2 gap-3">
               {tip.images.map((image, index) => (<>
-                <div className="font-semibold text-lg">Image {index + 1}.</div>
+                <span className="font-semibold text-lg">Image {index + 1}.</span>
 
                 <img
                   key={image.public_id}
