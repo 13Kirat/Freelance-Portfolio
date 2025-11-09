@@ -45,7 +45,7 @@ const Hero = () => {
       <h1 className="text-tubeLight-effect overflow-x-hidden text-[1.3rem] 
       sm:text-[1.75rem] md:text-[2.2rem] lg:text-[2.8rem] tracking-[15px]">
         <Typewriter
-          words={["FULLSTACK DEVELOPER", "RESEARCHER", "FREELANCER"]}
+          words={["INNOVATOR", "RESEARCHER", "PROFESSOR", "ENTERPRENEUR", "CHILL GUY", "Innovator"]}
           loop={50}
           cursor
           typeSpeed={70}
