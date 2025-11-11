@@ -27,7 +27,7 @@ const AddProject = () => {
   const [projectLink, setProjectLink] = useState("");
   const [technologies, setTechnologies] = useState("");
   const [stack, setStack] = useState("");
-  const [deployed, setDeployed] = useState("");
+  const [deployed, setDeployed] = useState("YES");
   const [category, setCategory] = useState("");
   const [status, setStatus] = useState("");
 
