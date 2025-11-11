@@ -211,7 +211,7 @@ const UpdateProject = () => {
                     </datalist>
                   </div>
                 </div>
-                <div className="w-full sm:col-span-4">
+                {/* <div className="w-full sm:col-span-4">
                   <label className="block text-sm font-medium leading-6 text-gray-900">
                     Deployed
                   </label>
@@ -233,7 +233,7 @@ const UpdateProject = () => {
                       </Select>
                     </div>
                   </div>
-                </div>
+                </div> */}
 
                 <div className="w-full sm:col-span-4 relative">
                   <label className="block text-sm font-medium leading-6 text-gray-900">

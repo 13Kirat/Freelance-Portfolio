@@ -38,7 +38,7 @@ const Tips = () => {
 
   return (
     <div className="container mx-auto py-8">
-      <h1 className="text-4xl font-bold text-center mb-8">Some of Amazing Tips</h1>
+      <h1 className="text-4xl font-bold text-center mb-8">Some of My Amazing Tips</h1>
       <p className="text-center">Number of tips: {tips.length}</p>
       <div className="flex justify-center mb-8">
         {categories.map((cat) => (

@@ -45,8 +45,8 @@ const ProjectView = () => {
     getProject();
   }, [id]);
 
-  const descriptionList = description?.split(". ") || [];
-  const technologiesList = technologies?.split(", ") || [];
+  const descriptionList = description?.split(".") || [];
+  const technologiesList = technologies?.split(",") || [];
 
   return (
     <div className="relative flex justify-center items-center min-h-screen py-10 px-6 bg-[#0e0e10] text-gray-100">

@@ -19,7 +19,7 @@ const TipModal = ({ tip, onClose }) => {
         </CardHeader>
 
         {/* Content */}
-        <CardContent className="pt-4">
+        <CardContent className="pt-4 overflow-y-scroll">
           <p className="text-sm text-gray-400">{tip.category}</p>
           <p className="mt-3 text-gray-200 leading-relaxed">{tip.description}</p>
           {/* Images */}
