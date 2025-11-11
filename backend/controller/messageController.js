@@ -10,12 +10,12 @@ export const sendMessage = catchAsyncErrors(async (req, res, next) => {
   }
   try {
     const data = await Message.create({ senderName, subject, message });
-    const emailOptions = {
-      email: process.env.MY_EMAIL,
-      subject: "New Message from Portfolio Contact Form",
-      message: `Sender: ${senderName}\nSubject: ${subject}\nMessage: ${message}`,
-    };
-    await sendEmail(emailOptions);
+    // const emailOptions = {
+    //   email: process.env.MY_EMAIL,
+    //   subject: "New Message from Portfolio Contact Form",
+    //   message: `Sender: ${senderName}\nSubject: ${subject}\nMessage: ${message}`,
+    // };
+    // await sendEmail(emailOptions);
     res.status(201).json({
       success: true,
       message: "Message Sent",
