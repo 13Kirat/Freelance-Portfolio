@@ -11,7 +11,7 @@ const ProjectView = () => {
   const [technologies, setTechnologies] = useState("");
   const [stack, setStack] = useState("");
   const [gitRepoLink, setGitRepoLink] = useState("");
-  const [deployed, setDeployed] = useState("");
+  const [deployed, setDeployed] = useState("YES");
   const [projectLink, setProjectLink] = useState("");
   const [projectBannerPreview, setProjectBannerPreview] = useState("");
   const [category, setCategory] = useState("");
