@@ -41,7 +41,7 @@ const AddProject = () => {
     };
   };
 
-  const { loading, error, message } = useSelector((state) => state.project);
+  const { loading, error, message, projects } = useSelector((state) => state.project);
   const dispatch = useDispatch();
   const handleAddNewProject = (e) => {
     e.preventDefault();
@@ -127,33 +127,29 @@ const AddProject = () => {
                     </div>
                   </div>
                 </div>
-                <div className="w-full sm:col-span-4">
+                <div className="w-full sm:col-span-4 relative">
                   <label className="block text-sm font-medium leading-6 text-gray-900">
-                    Stack
+                    Domain
                   </label>
                   <div className="mt-2">
-                    <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600">
-                      <Select
-                        value={stack}
-                        onValueChange={(selectedValue) =>
-                          setStack(selectedValue)
-                        }
-                      >
-                        <SelectTrigger>
-                          <SelectValue placeholder="Select Project Stack" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="Full Stack">Full Stack</SelectItem>
-                          <SelectItem value="Mern">MERN</SelectItem>
-                          <SelectItem value="Mean">MEAN</SelectItem>
-                          <SelectItem value="Next.JS">NEXT.JS</SelectItem>
-                          <SelectItem value="React.JS">REACT.JS</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
+                    <input
+                      type="text"
+                      list="category-options"
+                      className="block w-full border border-gray-300 rounded-md py-2 px-2 focus:ring-2 focus:ring-indigo-600 focus:outline-none"
+                      placeholder="Enter or select category"
+                      value={stack}
+                      onChange={(e) => setStack(e.target.value)}
+                    />
+                    <datalist id="category-options">
+                      {[...new Set(projects.map((p) => p.stack))].map(
+                        (c, idx) => (
+                          <option key={idx} value={c} />
+                        )
+                      )}
+                    </datalist>
                   </div>
                 </div>
-                <div className="w-full sm:col-span-4">
+                {/* <div className="w-full sm:col-span-4">
                   <label className="block text-sm font-medium leading-6 text-gray-900">
                     Deployed
                   </label>
@@ -175,47 +171,51 @@ const AddProject = () => {
                       </Select>
                     </div>
                   </div>
-                </div>
+                </div> */}
 
-                <div className="w-full sm:col-span-4">
+                <div className="w-full sm:col-span-4 relative">
                   <label className="block text-sm font-medium leading-6 text-gray-900">
                     Category
                   </label>
                   <div className="mt-2">
-                    <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600">
-                      <input
-                        type="text"
-                        className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
-                        placeholder="Project Category"
-                        value={category}
-                        onChange={(e) => setCategory(e.target.value)}
-                      />
-                    </div>
+                    <input
+                      type="text"
+                      list="category-options"
+                      className="block w-full border border-gray-300 rounded-md py-2 px-2 focus:ring-2 focus:ring-indigo-600 focus:outline-none"
+                      placeholder="Enter or select category"
+                      value={category}
+                      onChange={(e) => setCategory(e.target.value)}
+                    />
+                    <datalist id="category-options">
+                      {[...new Set(projects.map((p) => p.category))].map(
+                        (c, idx) => (
+                          <option key={idx} value={c} />
+                        )
+                      )}
+                    </datalist>
                   </div>
                 </div>
 
-                <div className="w-full sm:col-span-4">
+                <div className="w-full sm:col-span-4 relative">
                   <label className="block text-sm font-medium leading-6 text-gray-900">
                     Status
                   </label>
                   <div className="mt-2">
-                    <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600">
-                      <Select
-                        value={status}
-                        onValueChange={(selectedValue) =>
-                          setStatus(selectedValue)
-                        }
-                      >
-                        <SelectTrigger>
-                          <SelectValue placeholder="Select Project Status" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="Ongoing">Ongoing</SelectItem>
-                          <SelectItem value="Completed">Completed</SelectItem>
-                          <SelectItem value="Archived">Archived</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
+                    <input
+                      type="text"
+                      list="category-options"
+                      className="block w-full border border-gray-300 rounded-md py-2 px-2 focus:ring-2 focus:ring-indigo-600 focus:outline-none"
+                      placeholder="Enter or select category"
+                      value={stack}
+                      onChange={(e) => setStatus(e.target.value)}
+                    />
+                    <datalist id="category-options">
+                      {[...new Set(projects.map((p) => p.status))].map(
+                        (c, idx) => (
+                          <option key={idx} value={c} />
+                        )
+                      )}
+                    </datalist>
                   </div>
                 </div>
 

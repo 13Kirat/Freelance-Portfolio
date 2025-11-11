@@ -122,14 +122,14 @@ const ProjectView = () => {
                       <td className="p-3 text-gray-200">{stack}</td>
                     </tr>
                   )}
-                  {deployed && (
+                  {/* {deployed && (
                     <tr className="border-b border-gray-700 hover:bg-[#1f1f23]">
                       <td className="p-3 font-semibold text-gray-400">
                         Deployment Type
                       </td>
                       <td className="p-3 text-gray-200">{deployed}</td>
                     </tr>
-                  )}
+                  )} */}
                   {category && (
                     <tr className="border-b border-gray-700 hover:bg-[#1f1f23]">
                       <td className="p-3 font-semibold text-gray-400">

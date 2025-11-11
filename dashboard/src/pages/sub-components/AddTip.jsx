@@ -35,7 +35,7 @@ const AddTip = () => {
     });
   };
 
-  const { loading, error, message } = useSelector((state) => state.tip);
+  const { loading, error, message, tips } = useSelector((state) => state.tip);
   const dispatch = useDispatch();
   const handleAddNewTip = (e) => {
     e.preventDefault();
@@ -104,20 +104,26 @@ const AddTip = () => {
                     </div>
                   </div>
                 </div>
-                <div className="w-full sm:col-span-4">
+                <div className="w-full sm:col-span-4 relative">
                   <label className="block text-sm font-medium leading-6 text-gray-900">
                     Category
                   </label>
                   <div className="mt-2">
-                    <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600">
-                      <input
-                        type="text"
-                        className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
-                        placeholder="Enter tip category"
-                        value={category}
-                        onChange={(e) => setCategory(e.target.value)}
-                      />
-                    </div>
+                    <input
+                      type="text"
+                      list="category-options"
+                      className="block w-full border border-gray-300 rounded-md py-2 px-2 focus:ring-2 focus:ring-indigo-600 focus:outline-none"
+                      placeholder="Enter or select category"
+                      value={category}
+                      onChange={(e) => setCategory(e.target.value)}
+                    />
+                    <datalist id="category-options">
+                      {[...new Set(tips.map((t) => t.category))].map(
+                        (c, idx) => (
+                          <option key={idx} value={c} />
+                        )
+                      )}
+                    </datalist>
                   </div>
                 </div>
 
