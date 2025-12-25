@@ -7,7 +7,7 @@ export const postToLinkedIn = createAsyncThunk(
   async (formData, { rejectWithValue }) => {
     try {
       const { data } = await axios.post(
-        `https://freelance-portfolio-production-8f14.up.railway.app/api/v1/linkedin/post`,
+        `https://freelance-portfolio-production-6486.up.railway.app/api/v1/linkedin/post`,
         formData,
         {
           withCredentials: true,

@@ -14,7 +14,7 @@ const Portfolio = () => {
   useEffect(() => {
     const getMyProjects = async () => {
       const { data } = await axios.get(
-        "https://freelance-portfolio-production-8f14.up.railway.app/api/v1/project/getall",
+        "https://freelance-portfolio-production-6486.up.railway.app/api/v1/project/getall",
         { withCredentials: true }
       );
       setProjects(data.projects);

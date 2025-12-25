@@ -75,7 +75,7 @@ const UpdateTip = () => {
     const getTip = async () => {
       try {
         const res = await axios.get(
-          `https://freelance-portfolio-production-8f14.up.railway.app/api/v1/tip/get/${id}`,
+          `https://freelance-portfolio-production-6486.up.railway.app/api/v1/tip/get/${id}`,
           { withCredentials: true }
         );
         const tip = res.data.tip;

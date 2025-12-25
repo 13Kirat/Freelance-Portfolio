@@ -34,7 +34,7 @@ export const getAllTeamMembers = () => async (dispatch) => {
   dispatch(teamSlice.actions.getAllTeamMembersRequest());
   try {
     const { data } = await axios.get(
-      "https://freelance-portfolio-production-8f14.up.railway.app/api/v1/team/getall",
+      "https://freelance-portfolio-production-6486.up.railway.app/api/v1/team/getall",
       { withCredentials: true }
     );
     dispatch(teamSlice.actions.getAllTeamMembersSuccess(data.teamMembers));

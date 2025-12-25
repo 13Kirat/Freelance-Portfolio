@@ -23,7 +23,7 @@ const ProjectView = () => {
     const getProject = async () => {
       try {
         const res = await axios.get(
-          `https://freelance-portfolio-production-8f14.up.railway.app/api/v1/project/get/${id}`,
+          `https://freelance-portfolio-production-6486.up.railway.app/api/v1/project/get/${id}`,
           { withCredentials: true }
         );
 
@@ -143,11 +143,10 @@ const ProjectView = () => {
                       <td className="p-3 font-semibold text-gray-400">Status</td>
                       <td className="p-3">
                         <span
-                          className={`px-2 py-1 rounded-md text-sm font-medium ${
-                            status.toLowerCase() === "completed"
+                          className={`px-2 py-1 rounded-md text-sm font-medium ${status.toLowerCase() === "completed"
                               ? "bg-green-900/40 text-green-300 border border-green-800/60"
                               : "bg-yellow-900/40 text-yellow-300 border border-yellow-800/60"
-                          }`}
+                            }`}
                         >
                           {status}
                         </span>

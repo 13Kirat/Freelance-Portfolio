@@ -86,7 +86,7 @@ export const getAllTeamMembers = () => async (dispatch) => {
   dispatch(teamSlice.actions.getAllTeamMembersRequest());
   try {
     const { data } = await axios.get(
-      "https://freelance-portfolio-production-8f14.up.railway.app/api/v1/team/getall",
+      "https://freelance-portfolio-production-6486.up.railway.app/api/v1/team/getall",
       { withCredentials: true }
     );
     dispatch(teamSlice.actions.getAllTeamMembersSuccess(data.teamMembers));
@@ -101,7 +101,7 @@ export const addTeamMember = (formData) => async (dispatch) => {
   dispatch(teamSlice.actions.addTeamMemberRequest());
   try {
     const { data } = await axios.post(
-      "https://freelance-portfolio-production-8f14.up.railway.app/api/v1/team/add",
+      "https://freelance-portfolio-production-6486.up.railway.app/api/v1/team/add",
       formData,
       {
         withCredentials: true,
@@ -120,7 +120,7 @@ export const deleteTeamMember = (id) => async (dispatch) => {
   dispatch(teamSlice.actions.deleteTeamMemberRequest());
   try {
     const { data } = await axios.delete(
-      `https://freelance-portfolio-production-8f14.up.railway.app/api/v1/team/delete/${id}`,
+      `https://freelance-portfolio-production-6486.up.railway.app/api/v1/team/delete/${id}`,
       { withCredentials: true }
     );
     dispatch(teamSlice.actions.deleteTeamMemberSuccess(data.message));
@@ -135,7 +135,7 @@ export const updateTeamMember = (id, formData) => async (dispatch) => {
   dispatch(teamSlice.actions.updateTeamMemberRequest());
   try {
     const { data } = await axios.put(
-      `https://freelance-portfolio-production-8f14.up.railway.app/api/v1/team/update/${id}`,
+      `https://freelance-portfolio-production-6486.up.railway.app/api/v1/team/update/${id}`,
       formData,
       {
         withCredentials: true,

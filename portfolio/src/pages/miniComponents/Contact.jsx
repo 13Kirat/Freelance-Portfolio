@@ -15,7 +15,7 @@ const Contact = () => {
     setLoading(true);
     await axios
       .post(
-        "https://freelance-portfolio-production-8f14.up.railway.app/api/v1/message/send",
+        "https://freelance-portfolio-production-6486.up.railway.app/api/v1/message/send",
         { senderName, subject, message },
         {
           withCredentials: true,
